@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sync_type">
+        <item>无同步</item>
+        <item>GPS同步</item>
+        <item>空口同步</item>
+        <item>自动空口同步</item>
+    </string-array>
+</resources>

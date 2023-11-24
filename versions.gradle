@@ -1,0 +1,21 @@
+ext {
+
+    sdkVersionConfig = [
+            compileSdkVersion: 31,
+            minSdkVersion    : 15,
+            targetSdkVersion : 31,
+    ]
+
+    dependencyLibVersion = [
+            core_ktx        : "1.8.0",
+            appcompat       : "1.3.0",
+            material        : "1.4.0",
+            constraintlayout: "2.0.4",
+            room_version    : "2.2.3",
+            fragment_version: "1.3.5",
+            appcompat_version: "1.3.0",
+            material_version: "1.4.0",
+            support_v4: "1.0.0",
+    ]
+
+}

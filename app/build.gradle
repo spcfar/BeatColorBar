@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    signingConfigs {
+        debug {
+            keyAlias 'love'
+            keyPassword '111111'
+            storePassword '111111'
+            storeFile file('../love.jks')
+        }
+        release {
+            keyAlias 'love'
+            keyPassword '111111'
+            storePassword '111111'
+            storeFile file('../love.jks')
+        }
+    }
+
+    compileSdkVersion 31
+    defaultConfig {
+        applicationId "com.far.bar"
+        minSdkVersion 22
+        targetSdkVersion 31
+        versionCode 63
+        versionName "3.4.0"
+//        multiDexEnabled false
+
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'arm64-v8a'//, 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+//            debuggable false
+        }
+
+        debug {
+//            debuggable false
+            minifyEnabled false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/*'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation "androidx.fragment:fragment:$dependencyLibVersion.fragment_version"
+    implementation "androidx.core:core-ktx:${dependencyLibVersion.core_ktx}"
+    implementation "androidx.room:room-runtime:$dependencyLibVersion.room_version"
+    kapt "androidx.room:room-compiler:$dependencyLibVersion.room_version"
+    implementation "androidx.room:room-ktx:$dependencyLibVersion.room_version"
+    implementation "androidx.appcompat:appcompat:$dependencyLibVersion.appcompat_version"
+    implementation "com.google.android.material:material:$dependencyLibVersion.material_version"
+    implementation "androidx.legacy:legacy-support-v4:$dependencyLibVersion.support_v4"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    implementation("com.github.bumptech.glide:glide:4.12.0") {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'org.projectlombok:lombok:1.18.20'
+
+}
+
